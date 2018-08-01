@@ -44,7 +44,14 @@ restService.get("/alert", function(req, res) {
   */
   
   //var exc = externalCall("https://jsonplaceholder.typicode.com/posts")
-  res.send("This confirms the test!");
+  var url = "https://jsonplaceholder.typicode.com/posts";
+  request(url, function (error, response, body) {
+    //console.log('error:', error); // Print the error if one occurred
+    //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    //console.log('body:', body); // Print the HTML for the Google homepage.
+    var result = body;
+  });
+  res.send(body);
 });
 
 restService.listen(process.env.PORT || 8000, function() {
