@@ -2,6 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const request = require("request");
 
 const restService = express();
 
@@ -25,8 +26,6 @@ restService.post("/echo", function(req, res) {
     displayText: speech,
     source: "webhook-echo-sample"
   });
-});
-
 });
 
 restService.listen(process.env.PORT || 8000, function() {
