@@ -29,6 +29,7 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.post("/alert", function(req, res) {
+  /*
   var speech =
     req.body.result &&
     req.body.result.parameters &&
@@ -40,8 +41,18 @@ restService.post("/alert", function(req, res) {
     displayText: speech,
     source: "webhook-BA-alert-test"
   });
+  */
+  externalCall("https://jsonplaceholder.typicode.com/posts")
 });
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
 });
+
+function externalCall(url){
+  request(url, function (error, response, body) {
+    console.log('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the HTML for the Google homepage.
+  });
+}
