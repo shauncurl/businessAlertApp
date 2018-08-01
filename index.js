@@ -28,7 +28,7 @@ restService.post("/echo", function(req, res) {
   });
 });
 
-restService.post("/alert", function(req, res) {
+restService.get("/alert", function(req, res) {
   /*
   var speech =
     req.body.result &&
@@ -42,7 +42,9 @@ restService.post("/alert", function(req, res) {
     source: "webhook-BA-alert-test"
   });
   */
-  externalCall("https://jsonplaceholder.typicode.com/posts")
+  
+  //var exc = externalCall("https://jsonplaceholder.typicode.com/posts")
+  res.send("This confirms the test!");
 });
 
 restService.listen(process.env.PORT || 8000, function() {
