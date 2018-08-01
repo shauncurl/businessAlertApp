@@ -28,30 +28,27 @@ restService.post("/echo", function(req, res) {
   });
 });
 
-restService.get("/alert", function(req, res) {
-  /*
-  var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.alertNumber
-      ? req.body.result.parameters.echoText
-      : "I am having trouble understanding the alert number. Tell me again.";
+restService.post("/alert", function(req, res) {
+  if(req.body.result && req.body.result.parameters && req.body.result.parameters.alertNumber){
+    var alertNum = req.body.result.parameters.alertNumber
+    var url = "http://69.28.75.149:3000/api/getData/?businessNumberIN="+alertNum;
+    
+    request(url, function (error, response, body) {
+      var result = JSON.parse(body);
+      var busNum_res = result['businessNumberIN'];
+      var accountManager = result['accountManager']
+      //res.send(result['businessNumberIN']);
+    }); 
+    var speech = "the account manager is listed as "+accountManager;
+  }
+  else{
+     var speech = "I am having trouble understanding the alert number. Tell me again."; 
+  }
   return res.json({
     speech: speech,
     displayText: speech,
     source: "webhook-BA-alert-test"
-  });
-  */
-  
-  //var exc = externalCall("https://jsonplaceholder.typicode.com/posts")
-  var url = "https://jsonplaceholder.typicode.com/posts";
-  request(url, function (error, response, body) {
-    //console.log('error:', error); // Print the error if one occurred
-    //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    //console.log('body:', body); // Print the HTML for the Google homepage.
-    var result = body;
-  });
-  res.send(body);
+  });  
 });
 
 restService.listen(process.env.PORT || 8000, function() {
