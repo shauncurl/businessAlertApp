@@ -28,6 +28,20 @@ restService.post("/echo", function(req, res) {
   });
 });
 
+restService.post("/alert", function(req, res) {
+  var speech =
+    req.body.result &&
+    req.body.result.parameters &&
+    req.body.result.parameters.alertNumber
+      ? req.body.result.parameters.echoText
+      : "I am having trouble understanding the alert number. Tell me again.";
+  return res.json({
+    speech: speech,
+    displayText: speech,
+    source: "webhook-BA-alert-test"
+  });
+});
+
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
 });
