@@ -30,7 +30,7 @@ restService.post("/echo", function(req, res) {
 
 restService.post("/alert", function(req, res) {
   var alertNum = req.body.queryResult.parameters.alertNumber
-  if(1=2){
+  if(alertNum!=Null){
     var url = "http://69.28.75.149:3000/api/getData/?businessNumberIN="+alertNum;
     
     request(url, function (error, response, body) {
@@ -42,7 +42,7 @@ restService.post("/alert", function(req, res) {
     var speech = "the account manager is listed as "+accountManager;
   }
   else{
-     var speech = "I am having trouble understanding the alert number. Tell me again."+alertNum; 
+     var speech = "I am having trouble understanding the alert number. Tell me again."; 
   }
   return res.json({
     speech: speech,
