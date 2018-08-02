@@ -47,7 +47,7 @@ restService.post("/alert", function(req, res) {
     var speech = "You have entered the alert number of ";
   }
   else{
-     var speech = "I am having trouble understanding the alert number. Tell me again.---Testing..."+value; 
+     var speech = "I am having trouble understanding the alert number. Tell me again.---Testing..."+value+" <-----"; 
   }
   return res.json({
     speech: speech,
