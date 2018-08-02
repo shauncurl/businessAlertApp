@@ -32,8 +32,8 @@ restService.post("/alert", function(req, res) {
   if(req.body.queryResult.parameters['alertNumber']!=''){
     
     var alertNum = req.body.queryResult.parameters['alertNumber']
-    //var url = "http://69.28.75.149:3000/api/getData/?businessNumberIN="+alertNum;
-    var url = "http://69.28.75.149:3000/api/getData/?businessNumberIN=BA0000002";
+    var url = "http://69.28.75.149:3000/api/getData/?businessNumberIN="+alertNum;
+    //var url = "http://69.28.75.149:3000/api/getData/?businessNumberIN=BA0000002";
     
     request(url, function (error, response, body) {
       var result = JSON.parse(body);
