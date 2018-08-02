@@ -29,7 +29,7 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.post("/alert", function(req, res) {
-  if(req.body.queryResult.parameters.alertNumber!=Null){
+  if(req.body.queryResult.parameters!=Null){
     /*
     var alertNum = req.body.queryResult.parameters.alertNumber
     var url = "http://69.28.75.149:3000/api/getData/?businessNumberIN="+alertNum;
@@ -42,7 +42,7 @@ restService.post("/alert", function(req, res) {
     }); 
     var speech = "the account manager is listed as "+accountManager;
     */
-    var speech = "You have entered the alert number of "+req.body.queryResult.parameters.alertNumber;
+    var speech = "You have entered the alert number of "+req.body.queryResult.parameters['alertNumber'];
   }
   else{
      var speech = "I am having trouble understanding the alert number. Tell me again.---Testing..."; 
