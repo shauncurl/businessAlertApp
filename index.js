@@ -43,8 +43,17 @@ restService.post("/alert", function(req, res) {
       
       return res.json({
         fulfillmentText: speech,
-        source: "webhook-BA-alert-test"
-      }); 
+        source: "webhook-BA-alert-test",
+        fulfillmentMessages: [
+          {
+            "text": {
+              "text": [
+                speech
+              ]
+            }
+          }
+        ]
+       }); 
     }); 
     
   }
