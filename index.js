@@ -42,8 +42,7 @@ restService.post("/alert", function(req, res) {
       var speech = "the account manager is listed as "+accountManager;
       
       return res.json({
-        speech: speech,
-        displayText: speech,
+        fulfillmentText: speech,
         source: "webhook-BA-alert-test"
       }); 
     }); 
