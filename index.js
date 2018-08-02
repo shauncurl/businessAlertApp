@@ -44,10 +44,10 @@ restService.post("/alert", function(req, res) {
     var speech = "the account manager is listed as "+accountManager;
     */
     var value = req.body.queryResult.parameters['alertNumber'] ? req.body.queryResult.parameters['alertNumber'] : "value failed!";
-    var speech = "You have entered the alert number of ";
+    var speech = "You have entered the alert number of "+value+" <-----";
   }
   else{
-     var speech = "I am having trouble understanding the alert number. Tell me again.---Testing..."+value+" <-----"; 
+     var speech = "I am having trouble understanding the alert number. Tell me again.---Testing..."; 
   }
   return res.json({
     speech: speech,
